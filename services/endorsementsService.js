@@ -4,7 +4,7 @@ const addEndorsement=async function(req, res){
     let data=req.body;
     let {debateId}= req.params;
     try {
-    const insertedEndorsement=await endorsementsRepo.addOrUpdateEndorsement(debateId, data.user_id, data.opinion);
+    const insertedEndorsement=await endorsementsRepo.addOrUpdateEndorsement(debateId, req.user.id, data.opinion);
     await res.status(200).send(insertedEndorsement);
     }
     catch(err){

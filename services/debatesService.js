@@ -3,6 +3,7 @@ const {parseOrderBy}= require('../helpers/helpers')
 
 const addDebate=async function(req, res){
     let data=req.body;
+    data.user_id= req.user.id
     try {
     const insertedDebate=await debatesRepo.addDebate(data);
     await res.status(200).send(insertedDebate);
